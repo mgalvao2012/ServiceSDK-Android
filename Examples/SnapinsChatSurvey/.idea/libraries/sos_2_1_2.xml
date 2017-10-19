@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="sos-2.1.2">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/6b08375d1385bdb21b28f00d33c8508a0e5b2d2d/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/6b08375d1385bdb21b28f00d33c8508a0e5b2d2d/output/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/6b08375d1385bdb21b28f00d33c8508a0e5b2d2d/output/jars/libs/dagger.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="knowledge-core-2.0.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/e534e1eedc08a85877412f8f0d9bca54c9a2c98b/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/e534e1eedc08a85877412f8f0d9bca54c9a2c98b/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

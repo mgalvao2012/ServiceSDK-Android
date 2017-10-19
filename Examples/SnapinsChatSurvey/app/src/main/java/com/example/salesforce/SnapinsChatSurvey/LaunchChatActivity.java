@@ -9,10 +9,13 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.salesforce.android.chat.core.ChatConfiguration;
+import com.salesforce.android.chat.core.model.PreChatField;
 import com.salesforce.android.chat.ui.ChatUI;
 import com.salesforce.android.chat.ui.ChatUIClient;
 import com.salesforce.android.chat.ui.ChatUIConfiguration;
 import com.salesforce.android.service.common.utilities.control.Async;
+import java.util.List;
+import java.util.Arrays;
 
 public class LaunchChatActivity extends AppCompatActivity {
 
@@ -24,13 +27,13 @@ public class LaunchChatActivity extends AppCompatActivity {
   // For more help, see the Snap-ins Developer's Guide:
   // https://developer.salesforce.com/docs/atlas.en-us.service_sdk_android.meta/service_sdk_android/servicesdk_android_dev_guide.htm
 
-  private static final String ORG_ID = INCOMPLETE_ORG_SETTING;
+  private static final String ORG_ID = "00D1I000001VgJy";
   // e.g. "00BC00000003Lqz"
-  private static final String LIVE_AGENT_POD = INCOMPLETE_ORG_SETTING;
+  private static final String LIVE_AGENT_POD = "d.la2-c1-iad.salesforceliveagent.com";
   // e.g. "d.la.POD_NAME.salesforce.com"
-  private static final String DEPLOYMENT_ID = INCOMPLETE_ORG_SETTING;
+  private static final String DEPLOYMENT_ID = "5721I000000LXFY";
   // e.g. "0BNW0000000003F"
-  private static final String BUTTON_ID = INCOMPLETE_ORG_SETTING;
+  private static final String BUTTON_ID = "5731I000000LWdP";
   // e.g. "357200000009MCq"
 
 
@@ -49,11 +52,46 @@ public class LaunchChatActivity extends AppCompatActivity {
       return;
     }
 
+    // Create a string field
+    PreChatField nameField = new PreChatField.Builder()
+            .build("User_Name", "Full Name", PreChatField.STRING);
+
+    // Create an email field
+    PreChatField emailField = new PreChatField.Builder()
+            .build("User_Email", "Email Address", PreChatField.EMAIL);
+
+    // Create a phone field
+    PreChatField phoneField = new PreChatField.Builder()
+            .build("User_Phone", "Phone Number", PreChatField.PHONE);
+
+    // Create a picklist field
+    PreChatField.PickListOption happyOption =
+            new PreChatField.PickListOption("Happy_Label", "Happy");
+    PreChatField.PickListOption sadOption =
+            new PreChatField.PickListOption("Sad_Label", "Sad");
+    PreChatField moodField = new PreChatField.Builder()
+            .addPickListOption(happyOption)
+            .addPickListOption(sadOption)
+            .build("User_Mood", "Mood", PreChatField.PICKLIST);
+
+    // Create the list of pre-chat fields
+    List<PreChatField> preChatFields =
+            Arrays.asList(nameField, emailField, phoneField, moodField);
+
+    // Build a configuration object with the pre-chat fields included
+    final ChatConfiguration chatConfiguration =
+            new ChatConfiguration.Builder(ORG_ID, BUTTON_ID,
+                    DEPLOYMENT_ID, LIVE_AGENT_POD)
+                    .preChatFields(preChatFields)
+                    .build();
+
     // Create a chat configuration instance
+    /*
     final ChatConfiguration chatConfiguration =
         new ChatConfiguration.Builder(ORG_ID, BUTTON_ID,
             DEPLOYMENT_ID, LIVE_AGENT_POD)
             .build();
+            */
     try {
       // Create a UI configuration instance from a chat config object
       // and start session!

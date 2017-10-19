@@ -12,6 +12,7 @@ import com.salesforce.android.cases.ui.CaseUI;
 import com.salesforce.android.cases.ui.CaseUIClient;
 import com.salesforce.android.cases.ui.CaseUIConfiguration;
 import com.salesforce.android.chat.core.ChatConfiguration;
+import com.salesforce.android.chat.core.model.PreChatField;
 import com.salesforce.android.chat.ui.ChatUI;
 import com.salesforce.android.chat.ui.ChatUIClient;
 import com.salesforce.android.chat.ui.ChatUIConfiguration;
@@ -22,6 +23,9 @@ import com.salesforce.android.knowledge.ui.KnowledgeUIConfiguration;
 import com.salesforce.android.service.common.utilities.control.Async;
 import com.salesforce.android.sos.api.Sos;
 import com.salesforce.android.sos.api.SosOptions;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Singleton that lets you initialize and launch all Snap-ins features.
@@ -39,33 +43,33 @@ public class SnapinsLauncher {
   private static final String INCOMPLETE_ORG_SETTING = "TODO_UPDATE_THIS_SETTING";
 
   // TODO Knowledge or Case Management: Specify the community URL
-  private static final String COMMUNITY_URL = INCOMPLETE_ORG_SETTING;
+  private static final String COMMUNITY_URL = "https://sdodemo-main-15edcbf6329.force.com/consumer";
   // e.g. "https://COMMUNITY_PREFIX.force.com"
 
   // TODO Knowledge: Specify category group and root category
-  private static final String CATEGORY_GROUP = INCOMPLETE_ORG_SETTING;
+  private static final String CATEGORY_GROUP = "Product";
   // e.g. "Travel"
-  private static final String ROOT_CATEGORY = INCOMPLETE_ORG_SETTING;
+  private static final String ROOT_CATEGORY = "All";
   // e.g. "All"
 
   // TODO Case Management: Specify action name
-  private static final String CREATE_CASE_ACTION_NAME = INCOMPLETE_ORG_SETTING;
+  private static final String CREATE_CASE_ACTION_NAME = "NewCaseUnauthenticated";
   // e.g. "NewCase"
 
   // TODO Live Agent Chat or SOS: Specify org ID and pod name
-  private static final String ORG_ID = INCOMPLETE_ORG_SETTING;
+  private static final String ORG_ID = "00D1I000001VgJy";
   // e.g. "00BC00000003Lqz"
-  private static final String POD_NAME = INCOMPLETE_ORG_SETTING;
+  private static final String POD_NAME = "d.la2-c1-iad.salesforceliveagent.com";
   // e.g. "d.la.POD_NAME.salesforce.com"
 
   // TODO Live Agent Chat: Specify deployment ID and button ID
-  private static final String CHAT_DEPLOYMENT_ID = INCOMPLETE_ORG_SETTING;
+  private static final String CHAT_DEPLOYMENT_ID = "5721I000000LXFY";
   // e.g. "0BNW0000000003F"
-  private static final String CHAT_BUTTON_ID = INCOMPLETE_ORG_SETTING;
+  private static final String CHAT_BUTTON_ID = "5731I000000LWdP";
   // e.g. "357200000009MCq"
 
   // TODO SOS: Specify deployment ID
-  private static final String SOS_DEPLOYMENT_ID = INCOMPLETE_ORG_SETTING;
+  private static final String SOS_DEPLOYMENT_ID = "0NW1I000000fxUb";
   // e.g. "0BNW0000000003F"
 
   // Singleton instance
@@ -231,10 +235,38 @@ public class SnapinsLauncher {
     }
     Log.i("Snapins Example","Starting Live Agent Chat...");
 
+
+    // Create a string field
+    PreChatField nameField = new PreChatField.Builder()
+            .build("User_Name", "Full Name", PreChatField.STRING);
+
+    // Create an email field
+    PreChatField emailField = new PreChatField.Builder()
+            .build("User_Email", "Email Address", PreChatField.EMAIL);
+
+    // Create a phone field
+    PreChatField phoneField = new PreChatField.Builder()
+            .build("User_Phone", "Phone Number", PreChatField.PHONE);
+
+    // Create a picklist field
+    PreChatField.PickListOption happyOption =
+            new PreChatField.PickListOption("Happy_Label", "Happy");
+    PreChatField.PickListOption sadOption =
+            new PreChatField.PickListOption("Sad_Label", "Sad");
+    PreChatField moodField = new PreChatField.Builder()
+            .addPickListOption(happyOption)
+            .addPickListOption(sadOption)
+            .build("User_Mood", "Mood", PreChatField.PICKLIST);
+
+    // Create the list of pre-chat fields
+    List<PreChatField> preChatFields =
+            Arrays.asList(nameField, emailField, phoneField, moodField);
+
     // Create a chat core configuration instance
     ChatConfiguration chatConfiguration =
             new ChatConfiguration.Builder(ORG_ID, CHAT_BUTTON_ID,
                     CHAT_DEPLOYMENT_ID, POD_NAME)
+                    .preChatFields(preChatFields)
                     .build();
 
     // Create a UI configuration instance from a chat core config object

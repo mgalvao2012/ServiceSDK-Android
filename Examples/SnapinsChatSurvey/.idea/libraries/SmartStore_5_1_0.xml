@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="SmartStore-5.1.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/8d2fe033189be5cb9eb1260db8c42cbbb2588b6e/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/8d2fe033189be5cb9eb1260db8c42cbbb2588b6e/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.salesforce.mobilesdk/SmartStore/5.1.0/4987d6c5f394d51c7f6ae44daa06e0cf7fbf17de/SmartStore-5.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

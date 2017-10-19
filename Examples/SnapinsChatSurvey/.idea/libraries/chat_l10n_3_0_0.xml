@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="chat-l10n-3.0.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/bb1c6bd470e9d9fe96f05c6a59469dbebfcad0ec/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/bb1c6bd470e9d9fe96f05c6a59469dbebfcad0ec/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

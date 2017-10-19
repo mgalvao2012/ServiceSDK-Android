@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="SalesforceSDK-5.1.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/7582d7f8a7c86b91081edfd0a69cd0225e286b5a/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/7582d7f8a7c86b91081edfd0a69cd0225e286b5a/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.salesforce.mobilesdk/SalesforceSDK/5.1.0/82fe999e337fe21c65f9108fc0c1708b49ada476/SalesforceSDK-5.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
